@@ -1,0 +1,14 @@
+Flask
+sentence-transformers>=2.2.2
+transformers<4.39
+torch>=1.10.0
+tf-keras  
+
+
+cd D:\resume_match_app
+git init
+git remote add origin https://github.com/Likhithasri11/LinkDraft.git
+git add .
+git commit -m "Initial commit of LinkDraft"
+git branch -M main
+git push -u origin main

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>LinkDraft - Match Result</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: url("{{ url_for('static', filename='background.jpeg') }}") no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+        color: black;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.1); /* Transparent white */
+        padding: 60px 40px;
+        border-radius: 24px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 580px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+    }
+
+    h1 {
+        font-family: 'Audiowide', cursive;
+        color: black;
+        margin-bottom: 16px;
+        font-size: 36px;
+        letter-spacing: 1.5px;
+        line-height: 1.6;
+    }
+
+    h3 {
+        color: white;
+        margin-bottom: 35px;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    h2 {
+        font-size: 24px;
+        color: white;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .score {
+        font-size: 46px;
+        font-weight: 700;
+        color: black;
+        margin: 20px 0;
+        line-height: 1.5;
+    }
+
+    .recommendation {
+        font-size: 19px;
+        color: white;
+        padding: 0 16px;
+        margin-top: 20px;
+        line-height: 1.8;
+    }
+
+    .recommendation span {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 22px;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 40px;
+        text-decoration: none;
+        color: #0066cc;
+        font-weight: bold;
+        border: 2px solid #0066cc;
+        padding: 12px 24px;
+        border-radius: 10px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #0066cc;
+        color: white;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .score {
+            font-size: 36px;
+        }
+
+        .recommendation {
+            font-size: 17px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LinkDraft</h1>
+        <h3>Linking Resumes and Job Drafts Perfectly</h3>
+        <h2>Match Result</h2>
+        <div class="score">{{ match_score }}%</div>
+        <div class="recommendation">
+            {% if match_score >= 80 %}
+                <span>🚀 Great match! Go ahead and apply.</span>
+            {% elif match_score >= 60 %}
+                <span>🛠️ Decent match. Consider refining your resume.</span>
+            {% else %}
+                <span>🔧 Low match. Align your resume better with the job role.</span>
+            {% endif %}
+        </div>
+        <a href="/">🔙 Try Again</a>
+    </div>
+</body>
+</html>
