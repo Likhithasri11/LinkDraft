@@ -3,6 +3,8 @@ sentence-transformers>=2.2.2
 transformers<4.39
 torch>=1.10.0
 tf-keras  
+gunicorn
+
 
 
 
